@@ -82,7 +82,7 @@ public class DictManagement {
             boolean exactMatch =
                     entry.getKeyword().equalsIgnoreCase(keyword);
             if (exactMatch) {
-                result.addLast(entry); // addLast --> get first
+                result.addLast(entry);
                 continue;
             }
 
@@ -102,9 +102,10 @@ public class DictManagement {
 
     public DictionaryEntry lookup(String keyword) {
         List<DictionaryEntry> searchResult = search(keyword);
-        if (searchResult.size() == 0)
+        int length = searchResult.size();
+        if (length == 0)
             return null;
-        return searchResult.get(0);
+        return searchResult.get(length - 1);
     }
 
     public void deleteEntry(DictionaryEntry entry) {

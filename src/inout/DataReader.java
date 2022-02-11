@@ -21,8 +21,11 @@ public class DataReader extends DataService {
             DictManagement.getInstance().setDictionary(dictionary);
             ois.close();
             is.close();
+        } catch (FileNotFoundException e) {
+            Printer.println("Không tìm thấy file dữ liệu: " + dataFile.getName(), Colors.RED);
+            return false;
         } catch (Exception e) {
-            e.printStackTrace();
+            Printer.println("Đọc dữ liệu không thành công.", Colors.RED);
             return false;
         }
 

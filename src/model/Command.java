@@ -28,7 +28,7 @@ public class Command {
         Command.validFunctions.add(Command.QUIT);
         Command.validFunctions.add(Command.HELP);
         Command.validFunctions.add(Command.EDIT);
-        Command.validFunctions.add(Command.SEARCH);x
+        Command.validFunctions.add(Command.SEARCH);
         Command.validFunctions.add(Command.LOOKUP);
         Command.validFunctions.add(Command.ADD);
         Command.validFunctions.add(Command.DELETE);

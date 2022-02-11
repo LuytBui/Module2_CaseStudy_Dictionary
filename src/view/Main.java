@@ -16,11 +16,9 @@ public class Main {
 
         greeting();
 
-        CommandParser commandParser = new CommandParser();
-
         while (!exit) {
             Command command = Inputer.listenForCommand();
-            commandParser.parseAndExecute(command);
+            CommandParser.getInstance().parseAndExecute(command);
         }
 
 

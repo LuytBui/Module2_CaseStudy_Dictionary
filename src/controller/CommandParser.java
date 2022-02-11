@@ -6,13 +6,24 @@ import utilities.Colors;
 import utilities.Printer;
 import view.Main;
 
-public class CommandParser {
+import java.util.LinkedList;
+import java.util.List;
 
-    public CommandParser() {
+public class CommandParser {
+    private static CommandParser instance;
+    private List<Command> commandList;
+    private CommandParser() {
+        commandList = new LinkedList<>();
+    }
+
+    public static CommandParser getInstance(){
+        if (instance == null)
+            instance = new CommandParser();
+        return instance;
     }
 
     public boolean parseAndExecute(Command command) {
-
+        commandList.add(command);
         if (!command.isValid()) {
             Printer.printIndentLine("Sai cú pháp!", Colors.RED);
             Printer.printIndent("Dùng lệnh  ");
