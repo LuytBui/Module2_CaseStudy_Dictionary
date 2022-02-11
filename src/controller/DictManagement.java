@@ -33,6 +33,10 @@ public class DictManagement {
     }
 
     public void printEntry(DictionaryEntry entry) {
+        if (entry == null){
+            Printer.println("Không tồn tại!", Colors.RED);
+            return;
+        }
         Printer.println("--------------------");
         Printer.printIndent("Từ khóa: ");
         Printer.println(entry.getKeyword(), Colors.KEYWORD_COLOR);

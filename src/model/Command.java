@@ -21,6 +21,11 @@ public class Command {
     public static final String LOAD = "load";
     public static final String IMPORT = "import";
 
+    public static final String SEARCH_SHORTCUT = "s";
+    public static final String LOOKUP_SHORTCUT = "l";
+    public static final String ADD_SHORTCUT = "a";
+    public static final String DELETE_SHORTCUT = "d";
+
     public static Set<String> validFunctions
             = new HashSet<>();
 
@@ -36,6 +41,12 @@ public class Command {
         Command.validFunctions.add(Command.SAVE);
         Command.validFunctions.add(Command.LOAD);
         Command.validFunctions.add(Command.IMPORT);
+        
+        Command.validFunctions.add(Command.SEARCH_SHORTCUT);
+        Command.validFunctions.add(Command.LOOKUP_SHORTCUT);
+        Command.validFunctions.add(Command.ADD_SHORTCUT);
+        Command.validFunctions.add(Command.DELETE_SHORTCUT);
+
     }
 
     public static final String END_INPUT = "end input";

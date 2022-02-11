@@ -42,15 +42,19 @@ public class CommandParser {
                 Helper.printInstructions();
                 break;
             case Command.SEARCH:
+            case Command.SEARCH_SHORTCUT:
                 DictionaryFacade.getInstance().executeSearch(command);
                 break;
             case Command.LOOKUP:
+            case Command.LOOKUP_SHORTCUT:
                 DictionaryFacade.getInstance().executeLookUp(command);
                 break;
             case Command.ADD:
+            case Command.ADD_SHORTCUT:
                 DictionaryFacade.getInstance().executeAddEntry(command);
                 break;
             case Command.DELETE:
+            case Command.DELETE_SHORTCUT:
                 DictionaryFacade.getInstance().executeDeleteEntry(command);
                 break;
             case Command.SHOW:
