@@ -1,7 +1,6 @@
 package model.command;
 
 import controller.DictManagement;
-import controller.DictionaryFacade;
 import inout.Inputer;
 import model.DictionaryEntry;
 import utilities.Colors;

@@ -1,7 +1,6 @@
 package model.command;
 
 import controller.DictManagement;
-import controller.DictionaryFacade;
 import model.DictionaryEntry;
 
 import java.util.List;

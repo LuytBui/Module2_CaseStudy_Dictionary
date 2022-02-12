@@ -1,14 +1,9 @@
 package inout;
 
-import com.sun.xml.internal.ws.wsdl.writer.document.Import;
-import controller.DictionaryFacade;
-import controller.Helper;
-import utilities.Colors;
-import model.*;
-import model.command.*;
 import model.DictionaryEntry;
+import model.command.*;
+import utilities.Colors;
 import utilities.Printer;
-import view.Main;
 
 import java.util.Scanner;
 
