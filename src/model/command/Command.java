@@ -1,12 +1,19 @@
-package model;
+package model.command;
 
-/*
-    ..
- */
+import inout.Inputer;
 
 import java.util.*;
 
-public class Command {
+public abstract class Command {
+    protected String function;
+    protected String parameter;
+
+    public Command(String function, String parameter) {
+        this.function = function;
+        this.parameter = parameter;
+    }
+
+    public abstract void execute();
 
     // static section -->
     public static final String QUIT = "quit";
@@ -18,7 +25,6 @@ public class Command {
     public static final String DELETE = "delete";
     public static final String SHOW = "show";
     public static final String SAVE = "save";
-    public static final String LOAD = "load";
     public static final String IMPORT = "import";
 
     public static final String SEARCH_SHORTCUT = "s";
@@ -39,7 +45,6 @@ public class Command {
         Command.validFunctions.add(Command.DELETE);
         Command.validFunctions.add(Command.SHOW);
         Command.validFunctions.add(Command.SAVE);
-        Command.validFunctions.add(Command.LOAD);
         Command.validFunctions.add(Command.IMPORT);
         
         Command.validFunctions.add(Command.SEARCH_SHORTCUT);
@@ -52,44 +57,35 @@ public class Command {
     public static final String END_INPUT = "end input";
     // <--- end of static section
 
-    private String commandString;  // = <function> <parameter>
-    private String function;
-    private String parameter;
 
-    public Command(String commandString) {
-        commandString = commandString.trim();
-        this.commandString = commandString;
 
-        int firstSpaceIndex = this.commandString.indexOf(" ");
 
-        if (firstSpaceIndex == -1){
-            this.function = commandString;
-            this.parameter = "";
-        } else {
-            this.function = this.commandString.substring(0, firstSpaceIndex);
-            this.parameter = this.commandString.substring(firstSpaceIndex);
-            this.parameter = this.parameter.trim();
-        }
-    }
 
     public boolean isValid() {
         return Command.validFunctions.contains(this.function);
     }
 
-    public String getCommandString() {
-        return commandString;
-    }
 
     public String getFunction() {
         return function;
     }
 
-    public String getParameter() {
-        return parameter;
-    }
 
     @Override
     public String toString() {
-        return this.commandString;
+        return function + " " + parameter;
+    }
+
+    public String getParameter(){
+        return this.parameter;
+    }
+
+    public String getParameter(String msg) {
+        if (msg.length() == 0)
+            return this.parameter;
+        if (this.parameter.length() == 0) {
+            this.parameter = Inputer.inputString(msg);
+        }
+        return this.parameter;
     }
 }

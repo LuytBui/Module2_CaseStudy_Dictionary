@@ -1,6 +1,6 @@
 package controller;
 
-import model.Command;
+import model.command.Command;
 import utilities.Colors;
 import utilities.Printer;
 

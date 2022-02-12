@@ -1,9 +1,8 @@
 package view;
 
-import controller.CommandParser;
 import inout.DataReader;
 import inout.Inputer;
-import model.Command;
+import model.command.Command;
 import utilities.Colors;
 import utilities.Printer;
 
@@ -18,7 +17,7 @@ public class Main {
 
         while (!exit) {
             Command command = Inputer.listenForCommand();
-            CommandParser.getInstance().parseAndExecute(command);
+            command.execute();
         }
 
 

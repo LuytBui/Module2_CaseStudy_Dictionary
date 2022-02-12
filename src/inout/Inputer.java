@@ -1,9 +1,14 @@
 package inout;
 
+import com.sun.xml.internal.ws.wsdl.writer.document.Import;
+import controller.DictionaryFacade;
+import controller.Helper;
 import utilities.Colors;
-import model.Command;
+import model.*;
+import model.command.*;
 import model.DictionaryEntry;
 import utilities.Printer;
+import view.Main;
 
 import java.util.Scanner;
 
@@ -12,9 +17,46 @@ public class Inputer {
 
     public static Command listenForCommand() {
         Printer.println();
-        Printer.print("Nhập câu lệnh: ");
-        String commandString = scanner.nextLine();
-        return new Command(commandString);
+        String commandString = inputString("Nhập câu lệnh: ");
+        int firstSpaceIndex = commandString.indexOf(" ");
+
+        String function;
+        String parameter;
+        if (firstSpaceIndex == -1){
+            function = commandString;
+            parameter = "";
+        } else {
+            function = commandString.substring(0, firstSpaceIndex);
+            parameter = commandString.substring(firstSpaceIndex);
+            parameter = parameter.trim();
+        }
+
+        switch (function){
+            case Command.QUIT:
+                return new QuitCommand(function, parameter);
+            case Command.HELP:
+                return new HelpCommand(function, parameter);
+            case Command.SEARCH:
+            case Command.SEARCH_SHORTCUT:
+                return new SearchCommand(function, parameter);
+            case Command.LOOKUP:
+            case Command.LOOKUP_SHORTCUT:
+                return new LookUpCommand(function, parameter);
+            case Command.ADD:
+            case Command.ADD_SHORTCUT:
+                return new AddCommand(function, parameter);
+            case Command.DELETE:
+            case Command.DELETE_SHORTCUT:
+                return new DeleteCommand(function, parameter);
+            case Command.SHOW:
+                return new ShowCommand(function, parameter);
+            case Command.SAVE:
+                return new SaveCommand(function, parameter);
+            case Command.IMPORT:
+                return new ImportCommand(function, parameter);
+            default:
+                return new InvalidCommand(function, parameter);
+        }
     }
 
     public static boolean confirm(String msg) {
@@ -27,7 +69,8 @@ public class Inputer {
     }
 
     public static String inputString(String msg) {
-        Printer.print(msg);
+        if (msg.length() > 0)
+            Printer.print(msg);
         String string = scanner.nextLine();
         return string;
     }
