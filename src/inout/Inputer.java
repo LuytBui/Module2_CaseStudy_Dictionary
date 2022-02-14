@@ -103,8 +103,6 @@ public class Inputer {
         content = content.trim();
         return content;
     }
-
-
     public static String getParameter(Command command, String msg) {
         if (msg.length() == 0)
             return command.getParameter();
@@ -123,7 +121,7 @@ public class Inputer {
             usernameExisted = UserManagement.getInstance().usernameExist(username);
             if (usernameExisted)
                 Printer.println("Tên đăng nhập này đã tồn tại!", Colors.RED);
-        } while (validUsername(username) && !usernameExisted);
+        } while (!validUsername(username) && !usernameExisted);
 
         String password = "";
         String reEnterPassword = "";
