@@ -27,10 +27,9 @@ public class Main {
             CommandProxy.execute(command);
         }
 
-
     }
 
-    public static void greeting(){
+    public static void greeting() {
         Printer.println("---------------------------------------", Colors.SYSTEM_MSG_COLOR);
         Printer.println("Chương trinh tra cứu thuật ngữ trong Java", Colors.SYSTEM_MSG_COLOR);
         Printer.println("---- WELCOME ----", Colors.SYSTEM_MSG_COLOR);
