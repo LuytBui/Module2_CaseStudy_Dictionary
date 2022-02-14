@@ -3,6 +3,7 @@ package model.user;
 import model.command.Command;
 import model.command.DeleteCommand;
 import model.command.ImportCommand;
+import model.command.RegisterCommand;
 import utilities.Colors;
 import utilities.Printer;
 import view.Main;
@@ -10,8 +11,9 @@ import view.Main;
 public class CommandProxy {
     public static boolean execute(Command command) {
         boolean restrictedCommand =
-                command instanceof DeleteCommand ||
-                        command instanceof ImportCommand;
+                command instanceof DeleteCommand
+                        || command instanceof ImportCommand
+                        || command instanceof RegisterCommand;
 
         boolean isAdmin = Main.currentUser.getRole().equals(User.ROLE_ADMIN);
 
