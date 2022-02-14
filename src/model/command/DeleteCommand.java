@@ -13,7 +13,7 @@ public class DeleteCommand extends Command{
 
     @Override
     public void execute() {
-        String keyword = getParameter("Nhập từ khoá: ");
+        String keyword = Inputer.getParameter(this, "Nhập từ khoá: ");
         DictionaryEntry searchResult = DictManagement.getInstance().findEntry(keyword);
 
         if (searchResult == null) {

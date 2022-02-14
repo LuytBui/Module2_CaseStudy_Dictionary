@@ -1,7 +1,5 @@
 package model.command;
 
-import inout.Inputer;
-
 import java.util.*;
 
 public abstract class Command {
@@ -26,6 +24,8 @@ public abstract class Command {
     public static final String SHOW = "show";
     public static final String SAVE = "save";
     public static final String IMPORT = "import";
+    public static final String LOGIN = "login";
+    public static final String REGISTER = "register";
 
     public static final String SEARCH_SHORTCUT = "s";
     public static final String LOOKUP_SHORTCUT = "l";
@@ -46,7 +46,9 @@ public abstract class Command {
         Command.validFunctions.add(Command.SHOW);
         Command.validFunctions.add(Command.SAVE);
         Command.validFunctions.add(Command.IMPORT);
-        
+        Command.validFunctions.add(Command.LOGIN);
+        Command.validFunctions.add(Command.REGISTER);
+
         Command.validFunctions.add(Command.SEARCH_SHORTCUT);
         Command.validFunctions.add(Command.LOOKUP_SHORTCUT);
         Command.validFunctions.add(Command.ADD_SHORTCUT);
@@ -80,12 +82,7 @@ public abstract class Command {
         return this.parameter;
     }
 
-    public String getParameter(String msg) {
-        if (msg.length() == 0)
-            return this.parameter;
-        if (this.parameter.length() == 0) {
-            this.parameter = Inputer.inputString(msg);
-        }
-        return this.parameter;
+    public void setParameter(String parameter) {
+        this.parameter = parameter;
     }
 }

@@ -1,7 +1,9 @@
 package inout;
 
+import controller.UserManagement;
 import model.DictionaryEntry;
 import model.command.*;
+import model.user.User;
 import utilities.Colors;
 import utilities.Printer;
 
@@ -11,8 +13,9 @@ public class Inputer {
     public static Scanner scanner = new Scanner(System.in);
 
     public static Command listenForCommand() {
+        final String PROMPT = "Nhập câu lệnh: ";
         Printer.println();
-        String commandString = inputString("Nhập câu lệnh: ");
+        String commandString = inputString(PROMPT);
         int firstSpaceIndex = commandString.indexOf(" ");
 
         String function;
@@ -49,6 +52,10 @@ public class Inputer {
                 return new SaveCommand(function, parameter);
             case Command.IMPORT:
                 return new ImportCommand(function, parameter);
+            case Command.LOGIN:
+                return new LoginCommand(function, parameter);
+            case Command.REGISTER:
+                return new RegisterCommand(function, parameter);
             default:
                 return new InvalidCommand(function, parameter);
         }
@@ -98,4 +105,54 @@ public class Inputer {
     }
 
 
+    public static String getParameter(Command command, String msg) {
+        if (msg.length() == 0)
+            return command.getParameter();
+        if (command.getParameter().length() == 0) {
+            command.setParameter(inputString(msg));
+        }
+        return command.getParameter();
+    }
+
+    public static User inputUser(){
+        String username;
+
+        boolean usernameExisted;
+        do {
+            username = inputString("Tên đăng nhập: ");
+            usernameExisted = UserManagement.getInstance().usernameExist(username);
+            if (usernameExisted)
+                Printer.println("Tên đăng nhập này đã tồn tại!", Colors.RED);
+        } while (validUsername(username) && !usernameExisted);
+
+        String password = "";
+        String reEnterPassword = "";
+        boolean reEnterMatch;
+
+        do {
+            password = inputString("Mật khẩu: ");
+            reEnterPassword = inputString("Nhập lại mật khẩu: ");
+            reEnterMatch = password.equals(reEnterPassword);
+            if (!reEnterMatch)
+                Printer.println("Không khớp!", Colors.RED);
+        } while (!validPassword(password) || !reEnterMatch);
+
+        String role = inputString("Role: ");
+        role = role.toLowerCase();
+        return new User(username, password, role);
+    }
+    public static boolean validPassword(String password){
+        if (password.length() < 6){
+            Printer.println("Mật khẩu phải dài hơn 6 ký tự.", Colors.RED);
+            return false;
+        }
+        return true;
+    }
+    public static boolean validUsername(String username){
+        if (username.charAt(0) >= '0' && username.charAt(0) <= '9'){
+            Printer.println("Tên đăng nhập không được bắt đầu bằng chữ số!", Colors.RED);
+            return false;
+        }
+        return true;
+    }
 }

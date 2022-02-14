@@ -2,6 +2,7 @@ package inout;
 
 import controller.DictManagement;
 import model.DictionaryEntry;
+import model.user.User;
 import utilities.Colors;
 import utilities.Printer;
 
@@ -91,4 +92,20 @@ public class DataReader extends DataService {
         return delimiter;
     }
 
+    public static List<User> importUsers(){
+        List<User> list = new ArrayList<>();
+        try {
+            InputStream is = new FileInputStream(loginFile);
+            ObjectInputStream ois = new ObjectInputStream(is);
+            list = (List<User> ) ois.readObject();
+            ois.close();
+            is.close();
+        } catch (FileNotFoundException e) {
+            Printer.println("Không tìm thấy file login: " + loginFile.getName(), Colors.RED);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Printer.println("Đọc dữ liệu không thành công.", Colors.RED);
+        }
+        return list;
+    }
 }

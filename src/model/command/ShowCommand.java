@@ -1,6 +1,7 @@
 package model.command;
 
 import controller.DictManagement;
+import inout.Inputer;
 import model.DictionaryEntry;
 import utilities.Colors;
 import utilities.Printer;
@@ -19,7 +20,7 @@ public class ShowCommand extends Command {
            return;
        }
 
-        String keyword = getParameter("Nhập từ khoá: ");
+        String keyword = Inputer.getParameter(this, "Nhập từ khoá: ");
         List<DictionaryEntry> searchResult = DictManagement.getInstance().search(keyword);
         String EMPTY_LIST_ALERT = "Không có chỉ mục nào với từ khóa "
                 + Printer.coloredText(keyword, Colors.KEYWORD_COLOR);

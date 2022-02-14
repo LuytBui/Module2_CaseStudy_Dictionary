@@ -11,7 +11,7 @@ public class AddCommand extends Command {
 
     @Override
     public void execute() {
-        String keyword = getParameter("Nhập từ khóa: ");
+        String keyword = Inputer.getParameter(this, "Nhập từ khóa: ");
         DictionaryEntry entry = Inputer.inputEntry(keyword);
         DictManagement.getInstance().setEntry(entry);
     }

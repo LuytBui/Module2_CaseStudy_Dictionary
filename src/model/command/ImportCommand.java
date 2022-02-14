@@ -15,7 +15,7 @@ public class ImportCommand extends Command{
 
     @Override
     public void execute() {
-        String source = getParameter("Nhập tên file: ");
+        String source = Inputer.getParameter(this, "Nhập tên file: ");
         List<DictionaryEntry> dictionaryEntryList
                 = DataReader.readEntryListFromFile(source);
 
