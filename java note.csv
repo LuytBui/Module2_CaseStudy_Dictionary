@@ -1,0 +1,23 @@
+﻿Java,'- Là một ngôn ngữ lập trình hướng đối tượng,'- Có khả năng thực thi ở nhiều loại thiết bị,'- Được sử dụng rộng rãi,,
+Java độc lập nền tảng,'- Java có tính độc lập nền tảng,'- Một chương trình Java có thể chạy trên nhiều nền tảng khác nhau mà không phải biên dịch lại,,,
+máy ảo Java,'- JVM : Java Virtual Machine,,,,
+JVM,'- JVM : Java Virtual Machine,'- Một chương trình viết bằng ngôn ngữ bậc cao cần được dịch sang ngôn ngữ máy trước khi được chạy trên máy tính,'- Mã nguồn Java không được trực tiếp dịch ra ngôn ngữ máy mà được biên dịch (compile) ra bytecode,'- Một chương trình Java khi được thực thi thì JVM sẽ thông dịch (interpret) ra ngôn ngữ máy thực sự,'- JVM là một phần của
+Java Virtual Machine,'- JVM : Java Virtual Machine,,,,
+byte code,'- byte code là ngôn được thực thi trên một máy tính ảo (JVM),,,,
+JDK,'- JDK: Java Development Kit,'- JDK là môi trường phát triển và biên dịch mã Java thành chương trình Java,'- JDK chứa các công cụ cần thiết để viết các chương trình Java và JRE để thực thi chúng.,,
+Java Development Kit,'- JDK: Java Development Kit,,,,
+JRE,'- JRE: Java Runtime Environment,JRE giúp thực thi các chương trình Java trong JVM,'- JRE được kèm theo trong JDK,"'- Nói một cách dễ hiểu, nếu bạn muốn chạy chương trình Java, bạn cần có JRE. Nếu bạn không phải là lập trình viên, bạn không cần cài đặt JDK mà chỉ cần JRE để chạy các chương trình Java. ",
+Java Runtime Environtment,'- JRE: Java Runtime Environment,,,,
+biến,'- có 2 loại biến trong Java: Primitives và Reference (nguyên thủy và tham chiếu),"'-  Một biến nguyên thủy (primitive) có thể là một trong tám kiểu: char, boolean, byte, short, int, long, double, hoặc float. Khi một biến nguyên thủy đã được khai báo, kiểu nguyên thủy của nó không bao giờ có thể thay đổi, mặc dù trong hầu hết các trường hợp, giá trị của nó có thể thay đổi.",'- Một biến tham chiếu (reference) được sử dụng để tham chiếu đến (hoặc truy cập) một đối tượng. Một biến tham chiếu được khai báo là một kiểu cụ thể và kiểu đó không bao giờ có thể thay đổi được. Một biến tham chiếu có thể được sử dụng để tham chiếu đến bất kỳ đối tượng nào thuộc kiểu đã khai báo hoặc kiểu con của kiểu khai báo (kiểu tương thích).,,
+variable,'- có 2 loại biến trong Java: Primitives và Reference (nguyên thủy và tham chiếu),,,,
+khai báo biến,<modifier> <dataType> <variable>;, <modifier> <dataType> <variable> = <value>;,"<modifier> <dataType> <variable 1>, <variable 2>, <variable 3>;",,
+khai báo hằng,từ khóa final,,,,
+modifier,"'- gồm có từ khóa static, từ khóa final, các access modifier",,,,
+access modifier,"Access modifiers trong Java được sử dụng để chỉ định các mức truy cập (access level) cho các lớp, các phương thức biến và hàm tạo.","Có 3 access modifier : public, protected, private","Có 4 access level: public, protected, private, default.
+Default access level tuơng ứng với trường hợp không chỉ định access modifier.",,
+access level,"Có 4 access level: public, protected, private, default.
+Default access level tuơng ứng với trường hợp không chỉ định access modifier.",,,,
+public,'- là một access modifier (access level),'- thành phần có public access level có thể được truy cập từ bất cứ đâu trong chương trình,,,
+private,'- là một access modifier (access level),'- thành phần có private access level chỉ có thể được truy cập bên trong lớp,,,
+protected,'- là một access modifier (access level),'- thành phần có protected access level chỉ có thể được truy cập trong cùng package hoặc khác package nhưng là class con của nó,,,
+default access level,'- default access level được áp dụng khi không chỉ định access modifier,'- thành phần có default access level chỉ có thể được truy cập trong cùng package,,,
